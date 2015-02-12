@@ -21,7 +21,7 @@
   <!--<xacro:include filename="$(find thor_mang_description)/robots/thor_mang_tud_joint_offsets.urdf.xacro.xml" /-->>
   <xacro:include filename="$(find thor_mang_description)/robots/thor_mang_zero_offsets.urdf.xacro.xml" />     
   
-  <macro name="thor_mang_tud_simple_macro">
+  <macro name="thor_mang_tud_macro">
   
   <thor_mang_torso_macro />
   
