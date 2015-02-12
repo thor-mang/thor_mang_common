@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<robot  name="thor_arm_7dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find thor_mang_description)/urdf/helper_macros.urdf.xacro.xml" />
+  
+  <!--Indices starting at 0 from torso-->  
+  <property name="head_joint_0_name" value="head_pan" />
+  <property name="head_joint_1_name" value="head_tilt" />
+  
+<!--  
+  <macro name="thor_arm_7dof_simple_macro" params="parent name reflect *origin">
+    <thor_arm_7dof_simple_with_offsets_macro parent="${parent}" name="${name}" reflect="${reflect}" j1_offset="-1.4" j2_offset="${M_PI*0.5}" j3_offset="-0.6" j4_offset="0.0" j5_offset="0.0">
+      <insert_block name="origin"/>
+    </thor_arm_7dof_simple_with_offsets_macro>
+  </macro>
+  -->
+  <macro name="thor_head_pan_tilt_unit_macro" params="parent name head_link_name j1_offset *origin">
+  
+  <joint name="${head_joint_0_name}" type="revolute">
+    <insert_block name="origin"/>
+    <parent
+      link="${parent}" />
+    <child
+       link="neck_link"/>
+    <axis
+      xyz="0 0 1" />
+    <xacro:joint_small_servo_limits_macro lower="${-M_PI}" upper="${M_PI}"/>
+  </joint>      
+
+  <link name="neck_link">
+    <xacro:inertial_sphere_with_pose_macro mass="0.1" diameter="0.03">
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0 0 -0.111"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/neck.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.05" rpy="0 0 0" />
+      <geometry>
+        <box size="0.045 0.045 0.15" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="${head_joint_1_name}" type="revolute">
+    <origin
+        xyz="0 0 0"
+        rpy="0 ${0 + j1_offset} 0" />
+    <parent
+      link="neck_link" />
+    <child
+       link="${head_link_name}"/>
+    <axis
+      xyz="0 1 0" />
+    <xacro:joint_small_servo_limits_macro lower="${-M_PI*0.5}" upper="${M_PI*0.5}"/>
+  </joint>    
+  
+  
+  <!--Transmissions for gazebo ros control-->
+  <xacro:joint_transmission_macro joint_name="${head_joint_0_name}"/>
+  <xacro:joint_transmission_macro joint_name="${head_joint_1_name}"/>
+
+  
+  <!--Coloring for Gazebo-->
+  <xacro:set_gazebo_robot_default_color_macro link_name="neck_link" />
+  
+  </macro>
+</robot>
+

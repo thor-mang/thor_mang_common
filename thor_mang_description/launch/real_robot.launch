@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+  <!--Provide option to set namespace from outside-->
+  <arg name="namespace" default="/thor_mang"/>
+
+  <arg name="robot_description" default="$(find thor_mang_description)/robots/thor_mang_tud_simple.urdf"/>
+  <param name="/robot_description" textfile="$(arg robot_description)" />
+
+  <group ns="$(arg namespace)">
+    <!-- robot state publisher -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  </group>
+</launch>

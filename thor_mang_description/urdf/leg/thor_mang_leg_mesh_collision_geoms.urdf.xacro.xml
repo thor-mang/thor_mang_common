@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<robot  name="thor_leg" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<macro name="leg_hip_yaw_collision_geom_macro">
+    <collision>
+      <origin
+        xyz="0.0 0 0.063"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/hip_yaw_left.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+
+</macro>  
+
+<macro name="leg_hip_roll_collision_geom_macro">
+    <collision>
+      <origin
+        xyz="0.0 0 0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/hip_roll_left.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+
+</macro>  
+
+<macro name="leg_thigh_collision_geom_macro" params="reflect">
+    <collision>
+      <origin
+        xyz="0 0 -0.0"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/hip_pitch_left.stl" scale="${0.001 * reflect} 0.001  0.001" />
+      </geometry>
+    </collision>
+
+</macro>  
+
+<macro name="leg_shank_collision_geom_macro" params="reflect">
+    <collision>
+      <origin
+        xyz="0.03 0 0.0"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/leg_left.stl" scale=" ${0.001 * reflect} 0.001 0.001"/>
+      </geometry>
+    </collision>
+
+
+</macro>  
+
+<macro name="leg_ankle_roll_collision_geom_macro" params="reflect">
+    <collision>
+      <origin
+         xyz="0.0 0 0.0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/ankle_roll_left.stl" scale="0.001 ${0.001 * reflect} 0.001"/>
+      </geometry>
+    </collision>
+    
+</macro>  
+
+<macro name="leg_foot_collision_geom_macro">
+    <collision>
+      <origin
+         xyz="0.0 0 0.0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/foot_left.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+</macro>  
+
+</robot>
+

@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+
+<robot  name="thor_mang_leg" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--<xacro:include filename="$(find thor_mang_description)/urdf/joint_params.xacro" />-->
+  <xacro:include filename="$(find thor_mang_description)/urdf/helper_macros.urdf.xacro.xml" />
+  
+  <!--Indices starting at 0 from torso-->
+  <property name="leg_joint_0_suffix" value="_hip_yaw" />
+  <property name="leg_joint_1_suffix" value="_hip_roll" />
+  <property name="leg_joint_2_suffix" value="_hip_pitch" />
+  <property name="leg_joint_3_suffix" value="_knee" />
+  <property name="leg_joint_4_suffix" value="_ankle_pitch" />
+  <property name="leg_joint_5_suffix" value="_ankle_roll" />
+    
+  <macro name="thor_mang_leg_macro" params="parent name reflect *origin leg_joint3_limit_lower leg_joint3_limit_upper">
+  
+  <joint name="${name}${leg_joint_0_suffix}" type="revolute">
+    <insert_block name="origin"/>
+    <parent
+      link="${parent}" />
+    <child
+       link="${name}_leg_hip_yaw"/>
+    <axis
+      xyz="0 0 -1" />
+    <xacro:joint_large_servo_limits_macro lower="${-M_PI*0.5}" upper="${M_PI*0.5}"/>
+  </joint>  
+    
+  <link name="${name}_leg_hip_yaw">
+    <xacro:inertial_sphere_with_pose_macro mass="0.15" diameter="0.05">
+      <origin xyz="-0.0478 0.0 0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0.0 0 0.063"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/hip_yaw_left.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:leg_hip_yaw_collision_geom_macro />    
+  </link>
+  
+  <joint name="${name}${leg_joint_1_suffix}" type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0"
+       />
+    <parent
+      link="${name}_leg_hip_yaw" />
+    <child
+      link="${name}_leg_hip_roll" />
+    <axis
+      xyz="-1 0 0" />
+    <xacro:joint_medium_servo_limits_macro lower="${-M_PI*0.5}" upper="${M_PI*0.5}"/>
+  </joint>
+  
+  <link name="${name}_leg_hip_roll">
+    <xacro:inertial_sphere_with_pose_macro mass="1.02" diameter="0.05">
+      <origin xyz="-0.0216 0.0 0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0.0 0 0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/hip_roll_left.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:leg_hip_roll_collision_geom_macro />    
+  </link>
+  
+  <joint name="${name}${leg_joint_2_suffix}" type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_leg_hip_roll" />
+    <child
+      link="${name}_leg_thigh" />
+    <axis
+      xyz="0 ${reflect} 0" />
+    <xacro:joint_large_servo_limits_macro lower="${-M_PI*0.5}" upper="${M_PI*0.5}"/>
+  </joint>
+  
+  <link name="${name}_leg_thigh">
+    <xacro:inertial_sphere_with_pose_macro mass="3.12" diameter="0.15">
+      <origin xyz="-0.0033 ${0.0294 * reflect} -0.172" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0 0 -0.0"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/hip_pitch_left.stl" scale="${0.001 * reflect} 0.001  0.001" />
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:leg_thigh_collision_geom_macro reflect="${reflect}"/>
+  </link>
+  
+  <joint
+     name="${name}${leg_joint_3_suffix}"
+    type="revolute">
+    <origin
+      xyz="-0.03 0 -0.3"
+      rpy="0 0 0"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_leg_thigh" />
+    <child
+      link="${name}_leg_shank" />
+    <axis
+      xyz="0 ${reflect} 0" />
+    <xacro:joint_large_servo_limits_macro lower="${leg_joint3_limit_lower}" upper="${leg_joint3_limit_upper}"/>
+  </joint>
+  
+  <link name="${name}_leg_shank">
+    <xacro:inertial_sphere_with_pose_macro mass="2.24" diameter="0.15">
+      <origin xyz="0.03 ${0.0313 * reflect} -0.17" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+         xyz="0.03 0 0"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/leg_left.stl" scale="${0.001 * reflect} 0.001  0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:leg_shank_collision_geom_macro reflect="${reflect}"/>    
+  </link>
+  
+  <joint name="${name}${leg_joint_4_suffix}" type="revolute">
+    <origin
+      xyz="0.03 0 -0.3"
+      rpy="0 0 0"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_leg_shank" />
+    <child
+      link="${name}_leg_ankle_roll" />
+    <axis
+      xyz="0 ${-reflect} 0" />
+    <xacro:joint_large_servo_limits_macro lower="${-M_PI*0.58}" upper="${M_PI*0.58}"/>
+  </joint>
+  
+  <link name="${name}_leg_ankle_roll">
+    <xacro:inertial_sphere_with_pose_macro mass="0.86" diameter="0.04">
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+         xyz="0.0 0 0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/ankle_roll_left.stl" scale="${0.001 * reflect} 0.001  0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:leg_ankle_roll_collision_geom_macro reflect="${reflect}"/>
+  </link>
+  
+  <joint name="${name}${leg_joint_5_suffix}" type="revolute">
+    <origin
+      xyz="-0.0 0 0"
+      rpy="0 0 0"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_leg_ankle_roll" />
+    <child
+      link="${name}_foot" />
+    <axis
+      xyz="1 0 0" />
+    <xacro:joint_medium_servo_limits_macro lower="${-M_PI*0.25}" upper="${M_PI}"/>
+  </joint>
+  
+  <link name="${name}_foot">
+    <xacro:inertial_sphere_with_pose_macro mass="1.03" diameter="0.07">
+      <origin xyz="0.0 0.0 -0.08" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+         xyz="0.0 0 0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/foot_left.stl" scale="0.001 0.001  0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:leg_foot_collision_geom_macro />
+
+    
+    <!--Additional collision geometry below foot to get more stable behavior in simulation-->
+    <!--  
+    <collision>
+      <origin rpy="0 0 0" xyz="0.017 0.0 -0.118"/>
+      <geometry>
+        <box size="0.265 0.15 0.01"/>
+      </geometry>
+      <xacro:red/>
+    </collision>
+    -->
+  </link>
+  
+  <!--Set special contact parameters for foot to avoid sliding over ground-->
+  <gazebo reference="${name}_foot">
+    <!-- kp and kd for rubber -->
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <fdir1>1 0 0</fdir1>
+    <maxVel>1.0</maxVel>
+    <minDepth>0.00</minDepth>
+  </gazebo>  
+  
+  <!--Transmissions for gazebo ros control-->
+  <xacro:joint_transmission_macro joint_name="${name}${leg_joint_0_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${leg_joint_1_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${leg_joint_2_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${leg_joint_3_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${leg_joint_4_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${leg_joint_5_suffix}"/>
+
+  <!--Coloring for Gazebo-->
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_leg_hip_yaw" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_leg_hip_roll" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_leg_thigh" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_leg_shank" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_leg_ankle_roll" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_foot" />
+
+  
+  </macro>
+</robot>
+

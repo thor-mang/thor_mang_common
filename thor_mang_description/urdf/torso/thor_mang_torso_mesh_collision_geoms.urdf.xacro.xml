@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<robot  name="thor_arm_7dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<macro name="pelvis_collision_geom_macro">
+    <collision>
+      <origin
+        xyz="0.0 0 -0.0"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/pelvis.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+</macro>  
+
+<macro name="waist_collision_geom_macro">
+    <collision>
+      <origin
+        xyz="0 0 -0.039"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/waist.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+</macro>  
+
+<macro name="utorso_collision_geom_macro">
+    <collision>
+      <origin
+         xyz="-0.0 0 ${0.159}"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/chest.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+</macro>  
+
+</robot>
+

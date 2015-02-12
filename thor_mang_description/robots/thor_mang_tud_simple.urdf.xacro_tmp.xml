@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="thor_mang_robot">  
+
+  <xacro:include filename="$(find thor_mang_description)/urdf/constants.xacro"/>
+  <xacro:include filename="$(find thor_mang_description)/urdf/thor_arm_7dof_simple.urdf.xacro"/>
+  <xacro:include filename="$(find thor_mang_description)/urdf/thor_mang_torso.urdf.xacro.xml"/>
+  <xacro:include filename="$(find thor_mang_description)/urdf/thor_mang_leg.urdf.xacro.xml"/>
+  <xacro:include filename="$(find thor_mang_description)/urdf/thor_head_pan_tilt_unit.urdf.xacro.xml"/>
+  <xacro:include filename="$(find thor_mang_description)/urdf/thor_simple_camera_head.urdf.xacro.xml"/>
+  <xacro:include filename="$(find thor_mang_description)/urdf/thor_lidar_pan_unit.urdf.xacro.xml"/>
+  
+  <!--<xacro:include filename="$(find thor_mang_description)/robots/thor_mang_tud_joint_offsets.urdf.xacro.xml" /-->&gt;
+  <xacro:include filename="$(find thor_mang_description)/robots/thor_mang_zero_offsets.urdf.xacro.xml"/>     
+  
+  <macro name="thor_mang_tud_simple_macro">
+  
+  <thor_mang_torso_macro/>
+  
+  <thor_mang_leg_macro parent="pelvis" name="l" reflect="1">
+    <origin xyz="0.0 0.072 -0.082" rpy="0 0 0"/>
+  </thor_mang_leg_macro>
+  
+  <thor_mang_leg_macro parent="pelvis" name="r" reflect="-1">
+    <origin xyz="0.0 -0.072 -0.082" rpy="0 0 0"/>
+  </thor_mang_leg_macro>
+  
+  <thor_arm_7dof_simple_with_offsets_macro parent="utorso" name="l" reflect="1" arm_joint_3_limit_lower="${-M_PI}" arm_joint_3_limit_upper="${M_PI*0.1}" j1_offset="${l_arm_j1_offset}" j2_offset="${l_arm_j2_offset}" j3_offset="${l_arm_j3_offset}" j4_offset="${l_arm_j4_offset}" j5_offset="${l_arm_j5_offset}" j6_offset="${l_arm_j6_offset}">    
+    <origin xyz="0.0 0.183 0.165" rpy="0 ${0 + l_arm_j0_offset} 0"/>
+  </thor_arm_7dof_simple_with_offsets_macro>
+ 
+  <thor_arm_7dof_simple_with_offsets_macro parent="utorso" name="r" reflect="-1" arm_joint_3_limit_lower="${-M_PI*0.1}" arm_joint_3_limit_upper="${M_PI}" j1_offset="${r_arm_j1_offset}" j2_offset="${r_arm_j2_offset}" j3_offset="${r_arm_j3_offset}" j4_offset="${r_arm_j4_offset}" j5_offset="${r_arm_j5_offset}" j6_offset="${l_arm_j6_offset}">    
+    <origin xyz="0.0 -0.183 0.165" rpy="0 ${0 + r_arm_j0_offset} 0"/>
+  </thor_arm_7dof_simple_with_offsets_macro>
+  
+  <thor_head_pan_tilt_unit_macro parent="utorso" name="head" head_link_name="head_link" j1_offset="${head_j1_offset}">
+    <origin xyz="0.0 0.0 0.320" rpy="0 ${0 + head_j0_offset} 0"/>
+  </thor_head_pan_tilt_unit_macro>
+  
+  <thor_simple_camera_head_macro head_link_name="head_link">
+  </thor_simple_camera_head_macro>
+  
+  <thor_lidar_pan_unit_macro parent="utorso" name="waist">
+    <origin xyz="0.0 0.0 0.0878" rpy="0 ${0 + head_j0_offset} 0"/>
+  </thor_lidar_pan_unit_macro>
+  
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>thor_mang</robotNamespace>--&gt;
+    </plugin>
+  </gazebo>
+</macro>
+      
+</robot>

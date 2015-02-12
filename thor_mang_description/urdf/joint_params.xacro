@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot name="dynamixel_pro_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find thor_mang_description)/urdf/constants.xacro" />
+  
+  <xacro:macro name="joint1_limits">
+    <limit effort="39.131" lower="${-M_PI * 1.5}" upper="${M_PI * 1.5}" velocity="2.5"/>
+    <dynamics damping="${DAMPING}"/>
+  </xacro:macro>
+  
+  <property name="joint2_yaw_adjust" value="0.55"/>
+  <xacro:macro name="joint2_limits">
+    <limit effort="39.131" lower="-1.7" upper="1.85" velocity="2.5"/>
+    <dynamics damping="${DAMPING}"/>
+  </xacro:macro>
+
+  <xacro:macro name="joint3_limits">
+    <limit effort="39.131" lower="${-M_PI }" upper="${M_PI}" velocity="2.5"/>
+    <dynamics damping="${DAMPING}"/>
+  </xacro:macro>
+  
+  <property name="joint4_yaw_adjust" value="-0.6"/>
+  <xacro:macro name="joint4_limits">
+    <limit effort="21.142" lower="${-1.8 * 1.3 + joint4_yaw_adjust }" upper="${1 * 1.3 + joint4_yaw_adjust}" velocity="2.5"/>
+    <dynamics damping="${DAMPING}"/>
+  </xacro:macro>
+  
+  <property name="joint5_roll_adjust" value="0.55"/>
+  <xacro:macro name="joint5_limits">
+    <limit effort="5.596" lower="${-M_PI}" upper="${M_PI}" velocity="1.4"/>
+    <dynamics damping="${DAMPING}"/>
+  </xacro:macro>
+
+  <property name="joint6_yaw_adjust" value="-0.65"/>
+  <xacro:macro name="joint6_limits">
+    <limit effort="5.596" lower="${-M_PI/2+5*deg2rad}" upper="${M_PI/2-5*deg2rad}" velocity="1.4"/>
+    <dynamics damping="${DAMPING}"/>
+  </xacro:macro>
+
+
+</robot>

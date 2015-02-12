@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<robot name="thor_mang_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <property name="l_arm_j0_offset" value="0.0" />   
+  <property name="l_arm_j1_offset" value="0.0" />
+  <property name="l_arm_j2_offset" value="0.0" />
+  <property name="l_arm_j3_offset" value="0.0" /> 
+  <property name="l_arm_j4_offset" value="${M_PI*0.5}" /> 
+  <property name="l_arm_j5_offset" value="0.0" />   
+  <property name="l_arm_j6_offset" value="0.0" /> 
+  
+  <property name="r_arm_j0_offset" value="0.0" />   
+  <property name="r_arm_j1_offset" value="0.0" />
+  <property name="r_arm_j2_offset" value="0.0" />
+  <property name="r_arm_j3_offset" value="0.0" /> 
+  <property name="r_arm_j4_offset" value="${-M_PI*0.5}" /> 
+  <property name="r_arm_j5_offset" value="0.0" />   
+  <property name="r_arm_j6_offset" value="0.0" />
+  
+  <property name="head_j0_offset" value="0.0" />   
+  <property name="head_j1_offset" value="0.0" />
+  
+</robot>

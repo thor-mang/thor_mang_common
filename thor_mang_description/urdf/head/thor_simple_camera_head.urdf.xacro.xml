@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<robot  name="thor_arm_7dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find thor_mang_description)/urdf/helper_macros.urdf.xacro.xml" />
+  
+<!--  
+  <macro name="thor_arm_7dof_simple_macro" params="parent name reflect *origin">
+    <thor_arm_7dof_simple_with_offsets_macro parent="${parent}" name="${name}" reflect="${reflect}" j1_offset="-1.4" j2_offset="${M_PI*0.5}" j3_offset="-0.6" j4_offset="0.0" j5_offset="0.0">
+      <insert_block name="origin"/>
+    </thor_arm_7dof_simple_with_offsets_macro>
+  </macro>
+  -->
+  <macro name="thor_simple_camera_head_macro" params="head_link_name">
+  
+  <link name="${head_link_name}">
+    <xacro:inertial_sphere_with_pose_macro mass="0.1" diameter="0.03">
+      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/head.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+   <collision>
+      <origin xyz="0.01 0 0.075" rpy="0 0 0" />
+      <geometry>
+        <box size="0.16 0.1 0.1" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <!--Coloring for Gazebo-->
+  <xacro:set_gazebo_robot_default_color_macro link_name="${head_link_name}" />
+  
+  </macro>
+</robot>
+

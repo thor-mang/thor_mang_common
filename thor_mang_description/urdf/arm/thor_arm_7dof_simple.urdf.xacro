@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+
+<robot  name="thor_arm_7dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find thor_mang_description)/urdf/joint_params.xacro" />
+  <xacro:include filename="$(find thor_mang_description)/urdf/helper_macros.urdf.xacro.xml" />
+  
+  <!--Indices starting at 0 from torso-->  
+  <property name="arm_joint_0_suffix" value="_shoulder_pitch" />
+  <property name="arm_joint_1_suffix" value="_shoulder_roll" />
+  <property name="arm_joint_2_suffix" value="_shoulder_yaw" />
+  <property name="arm_joint_3_suffix" value="_elbow" />
+  <property name="arm_joint_4_suffix" value="_wrist_yaw1" />
+  <property name="arm_joint_5_suffix" value="_wrist_roll" />
+  <property name="arm_joint_6_suffix" value="_wrist_yaw2" />
+  
+  <property name="arm_joint_0_limit_lower" value="${-M_PI}" />
+  <property name="arm_joint_0_limit_upper" value="${M_PI}" />
+  <property name="arm_joint_1_limit_lower" value="${-M_PI}" />
+  <property name="arm_joint_1_limit_upper" value="${M_PI}" />
+  <property name="arm_joint_2_limit_lower" value="${-M_PI}" />
+  <property name="arm_joint_2_limit_upper" value="${M_PI}" />  
+  <property name="arm_joint_4_limit_lower" value="${-M_PI}" />
+  <property name="arm_joint_4_limit_upper" value="${M_PI}" />  
+  <property name="arm_joint_5_limit_lower" value="${-M_PI*0.6}" />
+  <property name="arm_joint_5_limit_upper" value="${M_PI*0.6}" />  
+  <property name="arm_joint_6_limit_lower" value="${-M_PI*1.3}" />
+  <property name="arm_joint_6_limit_upper" value="${M_PI*1.3}" />
+  
+  <property name="arm_link_0_y_offset" value="-0.051" />
+  <property name="arm_link_2_z_offset" value="-0.027" />    
+   
+  <macro name="thor_arm_7dof_simple_macro" params="parent name reflect *origin">
+    <thor_arm_7dof_simple_with_offsets_macro parent="${parent}" name="${name}" reflect="${reflect}" j1_offset="-1.4" j2_offset="${M_PI*0.5}" j3_offset="-0.6" j4_offset="0.0" j5_offset="0.0">
+      <insert_block name="origin"/>
+    </thor_arm_7dof_simple_with_offsets_macro>
+  </macro>
+  
+  <macro name="thor_arm_7dof_simple_with_offsets_macro" params="parent name reflect  arm_joint_3_limit_lower arm_joint_3_limit_upper j1_offset j2_offset j3_offset j4_offset j5_offset j6_offset *origin">
+  
+  <joint name="${name}${arm_joint_0_suffix}" type="revolute">
+    <insert_block name="origin"/>
+    <parent
+      link="${parent}" />
+    <child
+       link="${name}_arm_shoulder_pitch"/>
+    <axis
+      xyz="0 ${reflect} 0" />
+    <xacro:joint_large_servo_limits_macro lower="${arm_joint_0_limit_lower}" upper="${arm_joint_0_limit_upper}"/>
+  </joint>      
+
+  <link name="${name}_arm_shoulder_pitch">
+    <xacro:inertial_sphere_with_pose_macro mass="0.3" diameter="0.03">
+      <origin xyz="0.0 ${reflect*(arm_link_0_y_offset+0.05)} -0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0 ${reflect*arm_link_0_y_offset} 0"
+        rpy=" ${M_PI} ${M_PI*0.5} 0" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/shoulder_pitch_left.stl" scale="0.001 ${0.001 * reflect} 0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:arm_shoulder_pitch_collision_geom_macro reflect="${reflect}" y_offset="${arm_link_0_y_offset]}"/>
+  </link>
+  
+  <joint
+     name="${name}${arm_joint_1_suffix}"
+    type="revolute">
+    <origin
+      xyz="0.0 0.0 0"
+      rpy="${0 + j1_offset} 0 0"
+       />
+    <parent
+      link="${name}_arm_shoulder_pitch" />
+    <child
+      link="${name}_arm_shoulder_roll" />
+    <axis
+      xyz="-1 0 0" />
+    <xacro:joint_large_servo_limits_macro lower="${arm_joint_1_limit_lower}" upper="${arm_joint_1_limit_upper}"/>
+  </joint>
+  
+    <link name="${name}_arm_shoulder_roll">
+    <xacro:inertial_sphere_with_pose_macro mass="0.3" diameter="0.03">
+      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0.024 0 0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/shoulder_roll_left.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:arm_shoulder_roll_collision_geom_macro/>
+  </link>
+  
+  <joint name="${name}${arm_joint_2_suffix}" type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 ${0 + j2_offset}"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_arm_shoulder_roll" />
+    <child
+      link="${name}_arm_shoulder_yaw" />
+    <axis
+      xyz="0 0 -1" />
+    <xacro:joint_large_servo_limits_macro lower="${arm_joint_2_limit_lower}" upper="${arm_joint_2_limit_upper}"/>
+  </joint>
+  
+  <link name="${name}_arm_shoulder_yaw">
+    <xacro:inertial_sphere_with_pose_macro mass="2.89" diameter="0.15">
+      <origin xyz="0.0 0.0 ${-0.102+arm_link_2_z_offset}" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0 0 ${arm_link_2_z_offset}"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/shoulder_yaw_left.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:arm_shoulder_yaw_collision_geom_macro z_offset="${arm_link_2_z_offset}"/>
+
+  </link>
+  
+  <joint name="${name}${arm_joint_3_suffix}" type="revolute">
+    <origin
+      xyz="0.03 0 ${-0.219 + arm_link_2_z_offset}"
+      rpy="0 ${0 + j3_offset} 0"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_arm_shoulder_yaw" />
+    <child
+      link="${name}_arm_elbow" />
+    <axis
+      xyz="0 ${reflect} 0" />
+    <xacro:joint_medium_servo_limits_macro lower="${arm_joint_3_limit_lower}" upper="${arm_joint_3_limit_upper}"/>
+  </joint>
+  
+  <link name="${name}_arm_elbow">
+    <xacro:inertial_sphere_with_pose_macro mass="0.13" diameter="0.05">
+      <origin xyz="0.0 0.0 -0.04" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="-0.03 0 0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/elbow_left_mod.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:arm_elbow_collision_geom_macro />
+
+  </link>
+  
+  <joint name="${name}${arm_joint_4_suffix}" type="revolute">
+    <origin
+      xyz="-0.030 0 -0.18600"
+      rpy="0 0 ${0 + j4_offset}"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_arm_elbow" />
+    <child
+      link="${name}_arm_wrist_yaw" />
+    <axis
+      xyz="0 0 -1" />
+    <xacro:joint_small_servo_limits_macro lower="${arm_joint_4_limit_lower}" upper="${arm_joint_4_limit_upper}"/>
+  </joint>
+  
+  
+  <link name="${name}_arm_wrist_yaw">
+    <xacro:inertial_sphere_with_pose_macro mass="0.81" diameter="0.05">
+      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/wrist_yaw_left_mod.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:arm_wrist_yaw_collision_geom_macro />
+
+  </link>
+  
+  <joint name="${name}${arm_joint_5_suffix}" type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="${0 + j5_offset} 0 0"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_arm_wrist_yaw" />
+    <child
+      link="${name}_arm_wrist_roll" />
+    <axis
+      xyz="1 0 0" />
+    <xacro:joint_small_servo_limits_macro lower="${arm_joint_5_limit_lower}" upper="${arm_joint_5_limit_upper}"/>
+  </joint>
+  
+  <link name="${name}_arm_wrist_roll">
+    <xacro:inertial_sphere_with_pose_macro mass="0.27" diameter="0.03">
+      <origin xyz="0.0 0.0 -0.03" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
+      <geometry>
+        <mesh
+          filename="package://thor_mang_description/meshes/simple/wrist_roll_left_mod.stl" scale="${-0.001 * reflect} 0.001 0.001"/>
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:arm_wrist_roll_collision_geom_macro reflect="${reflect}"/>
+    
+  </link>
+  
+  <joint name="${name}${arm_joint_6_suffix}" type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="${0 + j6_offset} 0 0"
+       />
+    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
+    <parent
+      link="${name}_arm_wrist_roll" />
+    <child
+      link="${name}_arm_wrist_yaw2" />
+    <axis
+      xyz="0 0 -1" />
+    <xacro:joint_small_servo_limits_macro lower="${arm_joint_6_limit_lower}" upper="${arm_joint_6_limit_upper}"/>
+  </joint>
+  
+  <link name="${name}_arm_wrist_yaw2">
+    <xacro:inertial_sphere_with_pose_macro mass="0.81" diameter="0.05">
+      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>
+    <visual>
+      <origin
+        xyz="0 0 -0.135"
+        rpy=" 0 0 0" />
+      <geometry>
+	<box size="0.035 .035 .01"/>
+        <!--<mesh
+          filename="package://thor_mang_description/meshes/simple/wrist_yaw_left.stl" scale="0.001 0.001 0.001"/>-->
+      </geometry>
+      <xacro:black/>
+    </visual>
+    <xacro:arm_wrist_yaw2_collision_geom_macro />
+    
+  </link>
+  
+    <joint name="${name}_hand_joint" type="fixed">
+    <origin
+      xyz="0 0 -0.135"
+      rpy="0 0 0"/>
+    <parent
+      link="${name}_arm_wrist_yaw2" />
+    <child
+      link="${name}_hand" />
+
+  </joint>
+  
+  <link name="${name}_hand">
+  </link>
+  
+  <!--Transmissions for gazebo ros control-->
+  <xacro:joint_transmission_macro joint_name="${name}${arm_joint_0_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${arm_joint_1_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${arm_joint_2_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${arm_joint_3_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${arm_joint_4_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${arm_joint_5_suffix}"/>
+  <xacro:joint_transmission_macro joint_name="${name}${arm_joint_6_suffix}"/>
+  
+  <!--Coloring for Gazebo-->
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_arm_shoulder_pitch" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_arm_shoulder_roll" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_arm_shoulder_yaw" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_arm_elbow" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_arm_wrist_yaw" />
+  <xacro:set_gazebo_robot_default_color_macro link_name="${name}_hand" />
+  
+  </macro>
+</robot>
+
