@@ -11,11 +11,11 @@ Provides thor_mang related files required for both simulation and real robot use
     sudo apt-get install python-wstool
     ```
     
-* Create a catkin workspace if you don't already have one (we recommend a separate one for Baxter)
+* Create a catkin workspace if you don't already have one
 
     ```
-    mkdir -p ~/ros/ws_baxter/src
-    cd ~/ros/ws_baxter/src
+    mkdir -p ~/ros/thor_mang_common/src
+    cd ~/ros/thor_mang_common/src
     wstool init .
     ```
 * Pull repo into workspace and update
