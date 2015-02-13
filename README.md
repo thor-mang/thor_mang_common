@@ -39,6 +39,7 @@ Provides thor_mang related files required for both simulation and real robot use
 ## Usage
 
 You can take a look at the thor_mang model by running
+
     ```
     roslaunch thor_mang_description xacrodisplay_thor_mang_tud.launch
     ```
