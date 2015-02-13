@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<robot  name="thor_arm_7dof" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <macro name="thor_mang_pelvis_imu_macro">
+  
+  <joint name="pelvis_imu_joint" type="fixed">
+    <origin xyz="0.05372871 0 -0.019" rpy="0 0 0" />
+    <parent link="pelvis" />
+    <child link="pelvis_imu_link" />
+  </joint>
+  
+  <link
+    name="pelvis_imu_link">
+<!--    <xacro:inertial_sphere_with_pose_macro mass="0.1" diameter="0.05">
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </xacro:inertial_sphere_with_pose_macro>-->
+<!--    <visual>
+      <origin
+        xyz="0 0 -0.039"
+        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
+      <geometry>
+         <box size="0.04 0.024 0.015" />
+      </geometry>
+      <xacro:black/>
+    </visual>-->
+  </link>
+  
+  <gazebo>
+    <plugin name="pelvis_imu_controller" filename="libhector_gazebo_ros_imu.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>125.0</updateRate>
+      <bodyName>pelvis_imu_link</bodyName>
+      <topicName>/thor_mang/pelvis_imu</topicName>
+      <accelDrift>0.0 0.0 0.0</accelDrift>
+      <accelGaussianNoise>0.1 0.1 0.1</accelGaussianNoise>
+      <rateDrift>0.0 0.0 0.0</rateDrift>
+      <rateGaussianNoise>0.05 0.05 0.05</rateGaussianNoise>
+      <headingDrift>0.0</headingDrift>
+      <headingGaussianNoise>0.05</headingGaussianNoise>
+    </plugin>
+  </gazebo>
+  
+  </macro>
+</robot>
+

@@ -11,6 +11,7 @@
   
   <xacro:include filename="$(find thor_mang_description)/urdf/arm/thor_arm_7dof_simple.urdf.xacro" />
   <xacro:include filename="$(find thor_mang_description)/urdf/torso/thor_mang_torso.urdf.xacro.xml" />
+  <xacro:include filename="$(find thor_mang_description)/urdf/torso/thor_mang_pelvis_imu.urdf.xacro.xml" />
   <xacro:include filename="$(find thor_mang_description)/urdf/leg/thor_mang_leg.urdf.xacro.xml" />
   
   
@@ -24,6 +25,8 @@
   <macro name="thor_mang_tud_macro">
   
   <thor_mang_torso_macro />
+  
+  <thor_mang_pelvis_imu_macro />
   
   <thor_mang_leg_macro parent="pelvis" name="l" reflect="1" leg_joint3_limit_lower="${-M_PI*0.15}" leg_joint3_limit_upper="${M_PI}">
     <origin xyz="0.0 0.072 -0.145" rpy="0 0 0"/>
