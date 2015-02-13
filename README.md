@@ -19,16 +19,19 @@ Provides thor_mang related files required for both simulation and real robot use
     wstool init .
     ```
 * Pull repo into workspace and update
+
     ```
     wstool set --git thor_mang_common https://github.com/thor-mang/thor_mang_common.git
     wstool update
     ```
 * Build workspace
+
     ```
     cd ..
     catkin_make
     ```
 * Source workspace setup script
+
     ```
     source devel/setup.bash
     ```
