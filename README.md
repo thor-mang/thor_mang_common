@@ -5,7 +5,7 @@ Provides thor_mang related files required for both simulation and real robot use
 ## Standalone installation
 
 
-* Install wstool package
+* Install wstool
 
     ```
     sudo apt-get install python-wstool
