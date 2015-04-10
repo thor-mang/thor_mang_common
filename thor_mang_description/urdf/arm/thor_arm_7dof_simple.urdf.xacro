@@ -241,13 +241,13 @@
     <parent
       link="${name}_arm_wrist_roll" />
     <child
-      link="${name}_arm_wrist_yaw2" />
+      link="${name}_hand" />
     <axis
       xyz="0 0 -1" />
     <xacro:joint_small_servo_limits_macro lower="${arm_joint_6_limit_lower}" upper="${arm_joint_6_limit_upper}"/>
   </joint>
   
-  <link name="${name}_arm_wrist_yaw2">
+  <link name="${name}_hand">
     <xacro:inertial_sphere_with_pose_macro mass="0.81" diameter="0.05">
       <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
@@ -266,7 +266,7 @@
     
   </link>
   
-    <joint name="${name}_hand_joint" type="fixed">
+<!--    <joint name="${name}_hand_joint" type="fixed">
     <origin
       xyz="0 0 -0.135"
       rpy="0 0 0"/>
@@ -279,7 +279,7 @@
   
   <link name="${name}_hand">
   </link>
-  
+  -->
   <!--Transmissions for gazebo ros control-->
   <xacro:joint_transmission_macro joint_name="${name}${arm_joint_0_suffix}"/>
   <xacro:joint_transmission_macro joint_name="${name}${arm_joint_1_suffix}"/>
