@@ -67,18 +67,19 @@
     </gazebo>-->
   </xacro:macro>
 
+  <!-- Increased effort limit by x10 for gazebo -->
   <xacro:macro name="joint_small_servo_limits_macro" params="lower upper">
-    <limit effort="5.596" lower="${lower}" upper="${upper}" velocity="1.4"/>
+    <limit effort="50.596" lower="${lower}" upper="${upper}" velocity="1.4"/>
     <dynamics damping="${DAMPING}" friction="${FRICTION}"/>
   </xacro:macro>    
   
   <xacro:macro name="joint_medium_servo_limits_macro" params="lower upper">
-    <limit effort="21.142" lower="${lower}" upper="${upper}" velocity="2.5"/>
+    <limit effort="210.142" lower="${lower}" upper="${upper}" velocity="2.5"/>
     <dynamics damping="${DAMPING}" friction="${FRICTION}"/>
   </xacro:macro>    
 
   <xacro:macro name="joint_large_servo_limits_macro" params="lower upper">
-    <limit effort="39.131" lower="${lower}" upper="${upper}" velocity="2.5"/>
+    <limit effort="390.131" lower="${lower}" upper="${upper}" velocity="2.5"/>
     <dynamics damping="${DAMPING}" friction="${FRICTION}"/>
   </xacro:macro>    
 
