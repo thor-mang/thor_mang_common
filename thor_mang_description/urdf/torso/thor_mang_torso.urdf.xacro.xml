@@ -83,7 +83,7 @@
   
     <link
     name="utorso">
-    <xacro:inertial_cuboid__with_pose_macro mass="9.21" x_length="0.25" y_length="0.3" z_length="0.2" >
+    <xacro:inertial_cuboid__with_pose_macro mass="10.91" x_length="0.25" y_length="0.3" z_length="0.2" >
       <origin xyz="-0.0264 0.0 0.155" rpy="0 0 0"/>
     </xacro:inertial_cuboid__with_pose_macro>
     <visual>
