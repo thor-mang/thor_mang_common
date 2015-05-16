@@ -6,6 +6,9 @@
 
   <xacro:include filename="$(find thor_mang_description)/urdf/constants.xacro" />
 
+  <xacro:include filename="$(find thor_mang_description)/urdf/thor_mang_simple_mesh_visual_geoms.urdf.xacro.xml" />
+  <!--<xacro:include filename="$(find thor_mang_description)/urdf/thor_mang_mesh_visual_geoms.urdf.xacro.xml" />    -->
+
   <xacro:include filename="$(find thor_mang_description)/urdf/thor_mang_primitive_collision_geoms.urdf.xacro.xml" />
   <!--<xacro:include filename="$(find thor_mang_description)/urdf/thor_mang_mesh_collision_geoms.urdf.xacro.xml" />    -->
   

@@ -20,16 +20,7 @@
     <xacro:inertial_sphere_with_pose_macro mass="0.1" diameter="0.03">
       <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
-      <geometry>
-        <mesh
-          filename="package://thor_mang_description/meshes/simple/head.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <xacro:black/>
-    </visual>
+    <xacro:head_visual_geom_macro />
 <!--   <collision>
       <origin xyz="0.01 0 0.075" rpy="0 0 0" />
       <geometry>
