@@ -4,15 +4,15 @@
   
   <macro name="thor_poking_stick_macro" params="parent *origin">
   
-  <joint name="poking_stick_joint" type="fixed">
+  <joint name="left_poking_stick_joint" type="fixed">
     <insert_block name="origin"/>
     <parent
       link="${parent}" />
     <child
-       link="poking_stick"/>
+       link="left_poking_stick_frame"/>
   </joint>      
 
-  <link name="poking_stick">
+  <link name="left_poking_stick_frame">
    <inertial>
      <origin xyz="0.05 0 0" rpy="0 0 0"/>
      <mass value="0.2"/>
