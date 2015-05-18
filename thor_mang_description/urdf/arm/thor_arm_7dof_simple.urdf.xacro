@@ -181,7 +181,7 @@
   <joint name="${name}${arm_joint_6_suffix}" type="revolute">
     <origin
       xyz="0 0 0"
-      rpy="${0 + j6_offset} 0 0"
+      rpy="0 0 ${0 + j6_offset}"
        />
     <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
     <parent
