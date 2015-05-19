@@ -9,10 +9,10 @@
     <parent
       link="${parent}" />
     <child
-       link="left_poking_stick_frame"/>
+       link="left_poking_stick"/>
   </joint>      
 
-  <link name="left_poking_stick_frame">
+  <link name="left_poking_stick">
    <inertial>
      <origin xyz="0.05 0 0" rpy="0 0 0"/>
      <mass value="0.2"/>
