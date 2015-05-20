@@ -6,6 +6,8 @@ project(thor_mang_fall_detection)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  actionlib_msgs
+  vigir_humanoid_control_msgs
   sensor_msgs
   tf
 )
