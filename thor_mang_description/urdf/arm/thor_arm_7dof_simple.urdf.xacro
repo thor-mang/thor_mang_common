@@ -25,7 +25,7 @@
     </thor_arm_7dof_simple_with_offsets_macro>
   </macro>
   
-  <macro name="thor_arm_7dof_simple_with_offsets_macro" params="parent name reflect  arm_joint_3_limit_lower arm_joint_3_limit_upper j1_offset j2_offset j3_offset j4_offset j5_offset j6_offset *origin">
+  <macro name="thor_arm_7dof_simple_with_offsets_macro" params="parent name reflect  arm_joint_0_limit_lower arm_joint_0_limit_upper arm_joint_1_limit_lower arm_joint_1_limit_upper arm_joint_2_limit_lower arm_joint_2_limit_upper arm_joint_3_limit_lower arm_joint_3_limit_upper arm_joint_4_limit_lower arm_joint_4_limit_upper arm_joint_5_limit_lower arm_joint_5_limit_upper arm_joint_6_limit_lower arm_joint_6_limit_upper j1_offset j2_offset j3_offset j4_offset j5_offset j6_offset *origin">
   
   <joint name="${name}${arm_joint_0_suffix}" type="revolute">
     <insert_block name="origin"/>
