@@ -14,18 +14,7 @@
   <property name="arm_joint_5_suffix" value="_wrist_roll" />
   <property name="arm_joint_6_suffix" value="_wrist_yaw2" />
   
-  <property name="arm_joint_0_limit_lower" value="${-M_PI}" /> <!---M_PI -->
-  <property name="arm_joint_0_limit_upper" value="${2.3}" /> <!--M_PI -->
-  <property name="arm_joint_1_limit_lower" value="${-M_PI}" /> <!-- -M_PI -->
-  <property name="arm_joint_1_limit_upper" value="${0.05}" />  <!--M_PI -->
-  <property name="arm_joint_2_limit_lower" value="${-M_PI*0.5}" /> <!-- -M_PI -->
-  <property name="arm_joint_2_limit_upper" value="${M_PI}" />   <!-- M_PI --> 
-  <property name="arm_joint_4_limit_lower" value="${-M_PI}" /> <!-- -M_PI -->
-  <property name="arm_joint_4_limit_upper" value="${3.9}" />  <!-- M_PI -->
-  <property name="arm_joint_5_limit_lower" value="${-1.47}" />  <!-- -M_PI*0.6 -->
-  <property name="arm_joint_5_limit_upper" value="${1.47}" />   <!-- M_PI*0.6 -->
-  <property name="arm_joint_6_limit_lower" value="${-M_PI*1.3}" />  <!-- -M_PI*1.3 -->
-  <property name="arm_joint_6_limit_upper" value="${0.9}" />   <!-- M_PI*1.3 -->
+  
   
   <property name="arm_link_0_y_offset" value="-0.051" />
   <property name="arm_link_2_z_offset" value="-0.027" />    
