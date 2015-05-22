@@ -68,7 +68,7 @@
       link="${name}_leg_thigh" />
     <axis
       xyz="0 ${reflect} 0" />
-    <xacro:joint_large_servo_limits_macro lower="${-M_PI*0.5}" upper="${M_PI*0.5}"/>
+    <xacro:joint_large_servo_limits_macro lower="${-M_PI*0.5}" upper="1.78"/>
   </joint>
   
   <link name="${name}_leg_thigh">
