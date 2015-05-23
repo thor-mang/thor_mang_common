@@ -25,7 +25,7 @@
        link="neck_link"/>
     <axis
       xyz="0 0 1" />
-    <xacro:joint_small_servo_limits_macro lower="${-M_PI}" upper="${M_PI}"/>
+    <xacro:joint_small_servo_limits_macro lower="${-0.5*M_PI}" upper="${2.45}"/>
   </joint>      
 
   <link name="neck_link">
@@ -51,7 +51,7 @@
        link="${head_link_name}"/>
     <axis
       xyz="0 1 0" />
-    <xacro:joint_small_servo_limits_macro lower="${-M_PI*0.5}" upper="${M_PI*0.5}"/>
+    <xacro:joint_small_servo_limits_macro lower="${-1.32}" upper="${0.79}"/>
   </joint>    
   
   
