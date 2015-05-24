@@ -38,11 +38,11 @@
 
   
   <xacro:hokuyo_utm30lx name="${head_link_name}_hokuyo_laser" parent="${head_link_name}" ros_topic="/head_lidar/scan" update_rate="40" ray_count="1040" min_angle="130" max_angle="-130">
-    <origin xyz="0.043 0.0 0.11" rpy="0 0 0"/>
+    <origin xyz="0.065 0.0 0.085" rpy="0 0 0"/>
   </xacro:hokuyo_utm30lx>
   
   <xacro:generic_camera name="head_cam" parent="${head_link_name}" ros_topic="image_raw" cam_info_topic="camera_info" update_rate="10" res_x="640" res_y="480" image_format="R8G8B8" hfov="90">
-    <origin xyz="0.08 0.0 0.035" rpy="0 0 0"/>
+    <origin xyz="0.08 0.0 0.003" rpy="0 0 0"/>
   </xacro:generic_camera>
   
   <!--Coloring for Gazebo-->
