@@ -39,27 +39,53 @@
     <origin xyz="0.0 -0.072 -0.145" rpy="0 0 0"/>
   </thor_mang_leg_macro>
   
-  <thor_arm_7dof_simple_with_offsets_macro parent="utorso" name="l" reflect="1"
-     arm_joint_3_limit_lower="${-M_PI}"
-     arm_joint_3_limit_upper="${M_PI*0.1}"					   
+  <thor_arm_7dof_simple_with_offsets_macro parent="utorso" name="l" reflect="1"        
+     arm_joint_0_limit_lower="${-M_PI}"
+     arm_joint_0_limit_upper="${2.3}"
+     arm_joint_1_limit_lower="${-M_PI}"
+     arm_joint_1_limit_upper="${0.05}" 
+     arm_joint_2_limit_lower="${-M_PI*0.5}"
+     arm_joint_2_limit_upper="${M_PI}" 
+     arm_joint_3_limit_lower="${-2.9}" 
+     arm_joint_3_limit_upper="${0.6}"
+     arm_joint_4_limit_lower="${-M_PI}"
+     arm_joint_4_limit_upper="${4.71}"  
+     arm_joint_5_limit_lower="${-1.47}"   
+     arm_joint_5_limit_upper="${1.47}"   
+     arm_joint_6_limit_lower="${-2.54}"   
+     arm_joint_6_limit_upper="${0.9}"
+                           
      j1_offset="${l_arm_j1_offset}"
      j2_offset="${l_arm_j2_offset}"
      j3_offset="${l_arm_j3_offset}"
      j4_offset="${l_arm_j4_offset}"
      j5_offset="${l_arm_j5_offset}"
-     j6_offset="${l_arm_j6_offset}">    
+     j6_offset="${l_arm_j6_offset}">     
     <origin xyz="0.0 0.234 0.165" rpy="0 ${0 + l_arm_j0_offset} 0"/>
   </thor_arm_7dof_simple_with_offsets_macro>
  
   <thor_arm_7dof_simple_with_offsets_macro parent="utorso" name="r" reflect="-1"
-     arm_joint_3_limit_lower="${-M_PI*0.1}"
-     arm_joint_3_limit_upper="${M_PI}"
+     arm_joint_0_limit_lower="${-2.3}"
+     arm_joint_0_limit_upper="${M_PI}"
+     arm_joint_1_limit_lower="${-0.05}"
+     arm_joint_1_limit_upper="${M_PI}" 
+     arm_joint_2_limit_lower="${-M_PI}"
+     arm_joint_2_limit_upper="${M_PI*0.5}" 
+     arm_joint_3_limit_lower="${-0.6}" 
+     arm_joint_3_limit_upper="${2.9}"
+     arm_joint_4_limit_lower="${-4.71}"
+     arm_joint_4_limit_upper="${M_PI}"  
+     arm_joint_5_limit_lower="${-1.47}"   
+     arm_joint_5_limit_upper="${1.47}"   
+     arm_joint_6_limit_lower="${-0.9}"   
+     arm_joint_6_limit_upper="${2.54}"
+
      j1_offset="${r_arm_j1_offset}"
      j2_offset="${r_arm_j2_offset}"
      j3_offset="${r_arm_j3_offset}"
      j4_offset="${r_arm_j4_offset}"
      j5_offset="${r_arm_j5_offset}"
-     j6_offset="${r_arm_j6_offset}">    
+     j6_offset="${r_arm_j6_offset}">
     <origin xyz="0.0 -0.234 0.165" rpy="0 ${0 + r_arm_j0_offset} 0"/>
   </thor_arm_7dof_simple_with_offsets_macro>
   
