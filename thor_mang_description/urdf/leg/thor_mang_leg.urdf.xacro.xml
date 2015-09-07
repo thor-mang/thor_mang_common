@@ -28,7 +28,7 @@
     
   <link name="${name}_leg_hip_yaw">
     <xacro:inertial_cuboid__with_pose_macro mass="0.15" x_length="0.16" y_length="0.08" z_length="0.08">
-      <origin xyz="-0.0478 0.0 0.0" rpy="0 0 0"/>
+      <origin xyz="-0.02 0.0 0.0" rpy="0 0 0"/>
     </xacro:inertial_cuboid__with_pose_macro>
     <xacro:leg_hip_yaw_visual_geom_macro /> 
     <xacro:leg_hip_yaw_collision_geom_macro />    
@@ -55,7 +55,7 @@
     </xacro:inertial_sphere_with_pose_macro>
     -->
     <xacro:inertial_cuboid__with_pose_macro mass="1.02" x_length="0.12" y_length="0.08" z_length="0.08">
-      <origin xyz="-0.0216 0.0 0.0" rpy="0 0 0"/>
+      <origin xyz="-0.02 0.0 0.0" rpy="0 0 0"/>
     </xacro:inertial_cuboid__with_pose_macro>
     <xacro:leg_hip_roll_visual_geom_macro /> 
     <xacro:leg_hip_roll_collision_geom_macro />    

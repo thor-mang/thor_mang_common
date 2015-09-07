@@ -39,9 +39,14 @@
   
   <link
     name="waist">
+    <!--    
     <xacro:inertial_sphere_with_pose_macro mass="0.1" diameter="0.05">
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
+    -->
+    <xacro:inertial_cuboid__with_pose_macro mass="0.8" x_length="0.06" y_length="0.12" z_length="0.06" >
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </xacro:inertial_cuboid__with_pose_macro>
     <xacro:waist_visual_geom_macro />
     <xacro:waist_collision_geom_macro />
   </link>

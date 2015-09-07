@@ -39,9 +39,16 @@
   </joint>      
 
   <link name="${name}_arm_shoulder_pitch">
+    <!--    
     <xacro:inertial_sphere_with_pose_macro mass="0.3" diameter="0.03">
       <origin xyz="0.0 ${reflect*(arm_link_0_y_offset+0.05)} -0.0" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
+    -->
+    <xacro:inertial_cuboid__with_pose_macro mass="0.3" x_length="0.12" y_length="0.06" z_length="0.06">
+      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
+    </xacro:inertial_cuboid__with_pose_macro>
+    
+    
     <xacro:arm_shoulder_pitch_visual_geom_macro reflect="${reflect}" y_offset="${arm_link_0_y_offset]}"/>
     <xacro:arm_shoulder_pitch_collision_geom_macro reflect="${reflect}" y_offset="${arm_link_0_y_offset]}"/>
   </link>
@@ -63,9 +70,14 @@
   </joint>
   
     <link name="${name}_arm_shoulder_roll">
+    <!--      
     <xacro:inertial_sphere_with_pose_macro mass="0.3" diameter="0.03">
       <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
+    -->
+    <xacro:inertial_cuboid__with_pose_macro mass="0.6" x_length="0.12" y_length="0.06" z_length="0.06">
+      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
+    </xacro:inertial_cuboid__with_pose_macro>      
     <xacro:arm_shoulder_roll_visual_geom_macro/>
     <xacro:arm_shoulder_roll_collision_geom_macro/>
   </link>
@@ -86,9 +98,14 @@
   </joint>
   
   <link name="${name}_arm_shoulder_yaw">
+    <!--
     <xacro:inertial_sphere_with_pose_macro mass="2.89" diameter="0.15">
       <origin xyz="0.0 0.0 ${-0.102+arm_link_2_z_offset}" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
+    -->
+    <xacro:inertial_cuboid__with_pose_macro mass="2.89" x_length="0.08" y_length="0.08" z_length="0.204">
+      <origin xyz="0.0 0.0 ${-0.102+arm_link_2_z_offset}" rpy="0 0 0"/>
+    </xacro:inertial_cuboid__with_pose_macro>
     <xacro:arm_shoulder_yaw_visual_geom_macro z_offset="${arm_link_2_z_offset}"/>
     <xacro:arm_shoulder_yaw_collision_geom_macro z_offset="${arm_link_2_z_offset}"/>
 
@@ -110,9 +127,14 @@
   </joint>
   
   <link name="${name}_arm_elbow">
+    <!--    
     <xacro:inertial_sphere_with_pose_macro mass="0.13" diameter="0.05">
-      <origin xyz="0.0 0.0 -0.04" rpy="0 0 0"/>
+      
     </xacro:inertial_sphere_with_pose_macro>
+    -->
+    <xacro:inertial_cuboid__with_pose_macro mass="0.13" x_length="0.06" y_length="0.15" z_length="0.08">
+      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
+    </xacro:inertial_cuboid__with_pose_macro>
     <xacro:arm_elbow_visual_geom_macro />
     <xacro:arm_elbow_collision_geom_macro />
 
@@ -135,9 +157,14 @@
   
   
   <link name="${name}_arm_wrist_yaw">
+    <!--    
     <xacro:inertial_sphere_with_pose_macro mass="0.81" diameter="0.05">
       <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
+    -->
+    <xacro:inertial_cuboid__with_pose_macro mass="0.81" x_length="0.06" y_length="0.06" z_length="0.1">
+      <origin xyz="0.0 0.0 0.05" rpy="0 0 0"/>
+    </xacro:inertial_cuboid__with_pose_macro>
     <xacro:arm_wrist_yaw_visual_geom_macro />
     <xacro:arm_wrist_yaw_collision_geom_macro />
 
@@ -159,9 +186,17 @@
   </joint>
   
   <link name="${name}_arm_wrist_roll">
+    <!--
     <xacro:inertial_sphere_with_pose_macro mass="0.27" diameter="0.03">
       <origin xyz="0.0 0.0 -0.03" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
+    -->
+    
+    <xacro:inertial_cuboid__with_pose_macro mass="0.27" x_length="0.06" y_length="0.06" z_length="0.1">
+      <origin xyz="0.0 0.0 -0.07" rpy="0 0 0"/>
+    </xacro:inertial_cuboid__with_pose_macro>
+    
+    
     <xacro:arm_wrist_roll_visual_geom_macro reflect="${reflect}"/>
     <xacro:arm_wrist_roll_collision_geom_macro reflect="${reflect}"/>
     
@@ -183,9 +218,14 @@
   </joint>
   
   <link name="${name}_hand">
+    <!--
     <xacro:inertial_sphere_with_pose_macro mass="0.81" diameter="0.05">
       <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
     </xacro:inertial_sphere_with_pose_macro>
+    -->
+    <xacro:inertial_cuboid__with_pose_macro mass="0.13" x_length="0.035" y_length="0.035" z_length="0.01">
+      <origin xyz="0.0 0.0 -0.135" rpy="0 0 0"/>
+    </xacro:inertial_cuboid__with_pose_macro>
     <visual>
       <origin
         xyz="0 0 -0.135"
