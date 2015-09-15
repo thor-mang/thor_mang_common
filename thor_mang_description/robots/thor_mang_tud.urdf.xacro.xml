@@ -22,8 +22,8 @@
   <xacro:include filename="$(find thor_mang_description)/urdf/head/thor_lidar_camera_head.urdf.xacro.xml" />
   <xacro:include filename="$(find thor_mang_description)/urdf/lidar/thor_lidar_pan_unit.urdf.xacro.xml" />
   
-  <!--<xacro:include filename="$(find thor_mang_description)/robots/thor_mang_tud_joint_offsets.urdf.xacro.xml" /-->>
-  <xacro:include filename="$(find thor_mang_description)/robots/thor_mang_zero_offsets.urdf.xacro.xml" />     
+  <!--<xacro:include filename="$(find thor_mang_description)/robots/offsets/thor_mang_tud_joint_offsets.urdf.xacro.xml" /-->>
+  <xacro:include filename="$(find thor_mang_description)/robots/offsets/thor_mang_zero_offsets.urdf.xacro.xml" />     
   
   <macro name="thor_mang_tud_macro">
   
