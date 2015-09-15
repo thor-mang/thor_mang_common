@@ -9,7 +9,7 @@
         rpy=" ${M_PI} ${M_PI*0.5} 0" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/shoulder_pitch_left.stl" scale="0.001 ${0.001 * reflect} 0.001"/>
+          filename="package://thor_mang_description/meshes/visual/shoulder_pitch_left.stl" scale="0.001 ${0.001 * reflect} 0.001"/>
       </geometry>
     </collision>
 </macro>  
@@ -21,7 +21,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/shoulder_roll_left.stl" scale="0.001 0.001 0.001"/>
+          filename="package://thor_mang_description/meshes/visual/shoulder_roll_left.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 </macro>  
@@ -33,7 +33,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/shoulder_yaw_left.stl" scale="0.001 0.001 0.001"/>
+          filename="package://thor_mang_description/meshes/visual/shoulder_yaw_left.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 </macro>  
@@ -45,7 +45,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/elbow_left.stl" scale="0.001 0.001 0.001"/>
+          filename="package://thor_mang_description/meshes/visual/elbow_left.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 </macro>  
@@ -57,7 +57,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/wrist_yaw_left_mod.stl" scale="0.001 0.001 0.001"/>
+          filename="package://thor_mang_description/meshes/visual/wrist_yaw_left_mod.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
 </macro>  
@@ -69,7 +69,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/wrist_roll_left_mod.stl" scale="${-0.001 * reflect} 0.001 0.001"/>
+          filename="package://thor_mang_description/meshes/visual/wrist_roll_left_mod.stl" scale="${-0.001 * reflect} 0.001 0.001"/>
       </geometry>
     </collision>
 </macro>  
@@ -82,7 +82,7 @@
       <geometry>
 	<box size="0.035 .035 .01"/>
         <!--<mesh
-          filename="package://thor_mang_description/meshes/simple/wrist_yaw_left.stl" scale="0.001 0.001 0.001"/>-->
+          filename="package://thor_mang_description/meshes/visual/wrist_yaw_left.stl" scale="0.001 0.001 0.001"/>-->
       </geometry>
     </collision>
 </macro>  

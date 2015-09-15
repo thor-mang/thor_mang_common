@@ -9,7 +9,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/hip_yaw_left.stl" scale="0.001 0.001 0.001" />
+          filename="package://thor_mang_description/meshes/visual/hip_yaw_left.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <xacro:black/>
     </visual>
@@ -23,7 +23,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/hip_roll_left.stl" scale="0.001 0.001 0.001" />
+          filename="package://thor_mang_description/meshes/visual/hip_roll_left.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <xacro:black/>
     </visual>
@@ -37,7 +37,7 @@
         rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/hip_pitch_left.stl" scale="${0.001 * reflect} 0.001  0.001" />
+          filename="package://thor_mang_description/meshes/visual/hip_pitch_left.stl" scale="${0.001 * reflect} 0.001  0.001" />
       </geometry>
       <xacro:black/>
     </visual>
@@ -51,7 +51,7 @@
         rpy=" ${M_PI*0.5} 0 ${M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/leg_left.stl" scale="${0.001 * reflect} 0.001  0.001"/>
+          filename="package://thor_mang_description/meshes/visual/leg_left.stl" scale="${0.001 * reflect} 0.001  0.001"/>
       </geometry>
       <xacro:black/>
     </visual>
@@ -66,7 +66,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/ankle_roll_left.stl" scale="${0.001 * reflect} 0.001  0.001"/>
+          filename="package://thor_mang_description/meshes/visual/ankle_roll_left.stl" scale="${0.001 * reflect} 0.001  0.001"/>
       </geometry>
       <xacro:black/>
     </visual>
@@ -80,7 +80,7 @@
         rpy=" ${M_PI*0.5} 0 ${-M_PI*0.5}" />
       <geometry>
         <mesh
-          filename="package://thor_mang_description/meshes/simple/foot_left.stl" scale="0.001 0.001  0.001"/>
+          filename="package://thor_mang_description/meshes/visual/foot_left.stl" scale="0.001 0.001  0.001"/>
       </geometry>
       <xacro:black/>
     </visual>

@@ -101,7 +101,7 @@
       <geometry>
 	<box size="0.035 .035 .01"/>
         <!--<mesh
-          filename="package://thor_mang_description/meshes/simple/wrist_yaw_left.stl" scale="0.001 0.001 0.001"/>-->
+          filename="package://thor_mang_description/meshes/visual/wrist_yaw_left.stl" scale="0.001 0.001 0.001"/>-->
       </geometry>
     </collision>
 </macro>  
