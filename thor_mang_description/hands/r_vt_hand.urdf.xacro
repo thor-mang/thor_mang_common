@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+
+<robot xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" name="r_thor_hand" >
+  
+  <xacro:include filename="$(find thor_vt_hand_description)/urdf/vt_hand_tud.urdf.xacro.xml" />
+
+  <vt_hand_tud_macro parent="r_hand" prefix="r" reflect="1" >
+    <origin xyz="0 0 -0.16" rpy="3.141592 0 1.570796"/>
+  </vt_hand_tud_macro>
+  
+</robot>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<robot name="thor_mang_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find thor_mang_description)/robots/thor_mang_tud_simple.urdf.xacro" />
+
+  <xacro:include filename="$(find thor_mang_description)/hands/$(optenv RIGHT_HAND_TYPE r_stump).urdf.xacro" />
+  <xacro:include filename="$(find thor_mang_description)/hands/$(optenv LEFT_HAND_TYPE  l_stump).urdf.xacro" />
+
+      
+</robot>

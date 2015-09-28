@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<robot xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" name="l_thor_mang_hand" >
+  
+  <xacro:include filename="$(find thor_mang_description)/robots/thor_mang_hand.urdf.xacro"/>
+	
+  <!-- Joint to connect with robot parent-->
+  <joint name="l_thor_hand_joint" type="fixed">
+    <origin xyz="0.0 0.0 -0.0635" rpy="0 0 0"/>
+    <parent link="l_hand"/>
+    <child link="l_palm"/>
+  </joint>
+
+  <thor_mang_hand_macro name="l" reflect="-1">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </thor_mang_hand_macro>
+  
+</robot>
