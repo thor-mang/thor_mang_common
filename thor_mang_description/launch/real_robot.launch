@@ -8,7 +8,7 @@
   <param name="/robot_description" textfile="$(arg robot_description)" />-->
 
   <!-- send the robot XML to param server -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find thor_mang_description)/robots/$(optenv THOR_ROBOT_TYPE thor_mang)_tud_simple.urdf.xacro'" />
+  <param name="/robot_description" command="$(find xacro)/xacro.py '$(find thor_mang_description)/robots/$(optenv THOR_ROBOT_TYPE thor_mang)_tud_simple.urdf.xacro'" />
   
   <group ns="$(arg namespace)">
     <!-- robot state publisher -->
