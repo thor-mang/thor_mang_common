@@ -86,6 +86,8 @@
   <xacro:set_gazebo_robot_default_color_macro link_name="waist" />
   <xacro:set_gazebo_robot_default_color_macro link_name="utorso" />
   
+  
+  <!--  
   <gazebo>
     <plugin name="pelvis_imu_controller" filename="libhector_gazebo_ros_imu.so">
       <alwaysOn>true</alwaysOn>
@@ -100,7 +102,7 @@
       <headingGaussianNoise>0.05</headingGaussianNoise>
     </plugin>
   </gazebo>
-  
+  -->
   </macro>
 </robot>
 

@@ -3,7 +3,7 @@
 <launch>
   
   <include file="$(find thor_mang_description)/launch/xacrodisplay_common.launch">
-    <arg name="robot_description" value="$(find xacro)/xacro.py $(find thor_mang_description)/robots/thor_mang_tud.urdf.xacro"/>  
+    <arg name="robot_description" value="$(find xacro)/xacro.py $(find thor_mang_description)/robots/thor_mang_hands_tud_simple.urdf.xacro"/>  
   </include>  
   
 </launch>
