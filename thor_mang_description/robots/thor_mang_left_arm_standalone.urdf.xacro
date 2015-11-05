@@ -7,7 +7,7 @@
   <xacro:include filename="$(find thor_mang_description)/urdf/thor_mang_mesh_visual_geoms.urdf.xacro.xml" />
   <xacro:include filename="$(find thor_mang_description)/urdf/thor_mang_primitive_collision_geoms.urdf.xacro.xml" />
 
-  <xacro:include filename="$(find thor_mang_description)/robots/thor_mang_zero_offsets.urdf.xacro.xml" />     
+  <xacro:include filename="$(find thor_mang_description)/robots/offsets/thor_mang_zero_offsets.urdf.xacro.xml" />      
   
   <link
     name="utorso">
