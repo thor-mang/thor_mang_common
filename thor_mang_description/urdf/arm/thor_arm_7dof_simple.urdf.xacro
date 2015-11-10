@@ -204,7 +204,7 @@
   
   <joint name="${name}${arm_joint_6_suffix}" type="revolute">
     <origin
-      xyz="0 0 0"
+      xyz="0 0 -0.145"
       rpy="0 0 ${0 + j6_offset}"
        />
     <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
@@ -224,11 +224,12 @@
     </xacro:inertial_sphere_with_pose_macro>
     -->
     <xacro:inertial_cuboid__with_pose_macro mass="0.13" x_length="0.035" y_length="0.035" z_length="0.01">
-      <origin xyz="0.0 0.0 -0.135" rpy="0 0 0"/>
+      <!--<origin xyz="0.0 0.0 -0.135" rpy="0 0 0"/>-->
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
     </xacro:inertial_cuboid__with_pose_macro>
     <visual>
       <origin
-        xyz="0 0 -0.135"
+        xyz="0 0 0.01"
         rpy=" 0 0 0" />
       <geometry>
 	<box size="0.035 .035 .01"/>

@@ -96,7 +96,7 @@
 <macro name="arm_wrist_yaw2_collision_geom_macro">
     <collision>
       <origin
-        xyz="0 0 -0.135"
+        xyz="0 0 0.01"
         rpy=" 0 0 0" />
       <geometry>
 	<box size="0.035 .035 .01"/>
