@@ -39,15 +39,11 @@
   </joint>      
 
   <link name="${name}_arm_shoulder_pitch">
-    <!--    
-    <xacro:inertial_sphere_with_pose_macro mass="0.3" diameter="0.03">
-      <origin xyz="0.0 ${reflect*(arm_link_0_y_offset+0.05)} -0.0" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="0.3" x_length="0.12" y_length="0.06" z_length="0.06">
-      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
-    
+	<inertial>
+                <origin xyz="5.65e-03 ${reflect * -39.01e-03} 0" rpy="0 0 0"/>
+                <mass value="0.142"/>
+                <inertia ixx="83289.816e-09" ixy="${reflect * 13612.340e-09}" ixz="-0.001e-09" iyy="433477.861e-09" iyz="0" izz="422610.245e-09" />
+        </inertial>
     
     <xacro:arm_shoulder_pitch_visual_geom_macro reflect="${reflect}" y_offset="${arm_link_0_y_offset]}"/>
     <xacro:arm_shoulder_pitch_collision_geom_macro reflect="${reflect}" y_offset="${arm_link_0_y_offset]}"/>
@@ -70,15 +66,13 @@
   </joint>
   
     <link name="${name}_arm_shoulder_roll">
-    <!--      
-    <xacro:inertial_sphere_with_pose_macro mass="0.3" diameter="0.03">
-      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="0.6" x_length="0.12" y_length="0.06" z_length="0.06">
-      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>      
-    <xacro:arm_shoulder_roll_visual_geom_macro/>
+    	<inertial>
+                <origin xyz="1.3e-03 0 -1.15e-03" rpy="0 0 0"/>
+                <mass value="0.937"/>
+                <inertia ixx="451426.105e-09" ixy="${reflect * 0.434e-09}" ixz="11412.287e-09" iyy="1483429.746e-09" iyz="${reflect * -0.007e-09}" izz="1474889.397e-09" />
+        </inertial>
+     
+    <xacro:arm_shoulder_roll_visual_geom_macro reflect="${reflect}"/>
     <xacro:arm_shoulder_roll_collision_geom_macro/>
   </link>
   
@@ -87,7 +81,6 @@
       xyz="0 0 0"
       rpy="0 0 ${0 + j2_offset}"
        />
-    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
     <parent
       link="${name}_arm_shoulder_roll" />
     <child
@@ -98,15 +91,13 @@
   </joint>
   
   <link name="${name}_arm_shoulder_yaw">
-    <!--
-    <xacro:inertial_sphere_with_pose_macro mass="2.89" diameter="0.15">
-      <origin xyz="0.0 0.0 ${-0.102+arm_link_2_z_offset}" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="2.89" x_length="0.08" y_length="0.08" z_length="0.204">
-      <origin xyz="0.0 0.0 ${-0.102+arm_link_2_z_offset}" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
-    <xacro:arm_shoulder_yaw_visual_geom_macro z_offset="${arm_link_2_z_offset}"/>
+	<inertial>
+                <origin xyz="12.52e-03 ${reflect * -0.07e-03} -165.65e-03" rpy="0 0 0"/>
+                <mass value="1.836"/>
+                <inertia ixx="12547721.666e-09" ixy="${reflect * -8641.063e-09}" ixz="-1864553.503e-09" iyy="12409562.046e-09" iyz="${reflect * 16900.066e-09}" izz="1956754.834e-09" />
+        </inertial>
+
+    <xacro:arm_shoulder_yaw_visual_geom_macro reflect="${reflect}" z_offset="${arm_link_2_z_offset}"/>
     <xacro:arm_shoulder_yaw_collision_geom_macro z_offset="${arm_link_2_z_offset}"/>
 
   </link>
@@ -116,7 +107,6 @@
       xyz="0.03 0 ${-0.219 + arm_link_2_z_offset}"
       rpy="0 ${0 + j3_offset} 0"
        />
-    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
     <parent
       link="${name}_arm_shoulder_yaw" />
     <child
@@ -127,15 +117,13 @@
   </joint>
   
   <link name="${name}_arm_elbow">
-    <!--    
-    <xacro:inertial_sphere_with_pose_macro mass="0.13" diameter="0.05">
-      
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="0.13" x_length="0.06" y_length="0.15" z_length="0.08">
-      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
-    <xacro:arm_elbow_visual_geom_macro />
+	<inertial>
+                <origin xyz="-29.58e-03 ${reflect * 2.72e-03} -34.87e-03" rpy="0 0 0"/>
+                <mass value="0.132"/>
+                <inertia ixx="324345.667e-09" ixy="${reflect * 4992.020e-09}" ixz="17555.129e-09" iyy="100560.943e-09" iyz="${reflect * 7179.039e-09}" izz="338134.190e-09" />
+        </inertial>
+
+    <xacro:arm_elbow_visual_geom_macro reflect="${reflect}"/>
     <xacro:arm_elbow_collision_geom_macro />
 
   </link>
@@ -145,7 +133,6 @@
       xyz="-0.030 0 -0.18600"
       rpy="0 0 ${0 + j4_offset}"
        />
-    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
     <parent
       link="${name}_arm_elbow" />
     <child
@@ -157,15 +144,13 @@
   
   
   <link name="${name}_arm_wrist_yaw">
-    <!--    
-    <xacro:inertial_sphere_with_pose_macro mass="0.81" diameter="0.05">
-      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="0.81" x_length="0.06" y_length="0.06" z_length="0.1">
-      <origin xyz="0.0 0.0 0.05" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
-    <xacro:arm_wrist_yaw_visual_geom_macro />
+    	<inertial>
+                <origin xyz="-0.74e-03 0 48.62e-03" rpy="0 0 0"/>
+                <mass value="0.838"/>
+                <inertia ixx="2137604.574e-09" ixy="${reflect * -0.157e-09}" ixz="28646.979e-09" iyy="2301979.407e-09" iyz="${reflect * -0.259e-09}" izz="434226.705e-09" />
+        </inertial>
+
+    <xacro:arm_wrist_yaw_visual_geom_macro reflect="${reflect}"/>
     <xacro:arm_wrist_yaw_collision_geom_macro />
 
   </link>
@@ -175,7 +160,6 @@
       xyz="0 0 0"
       rpy="${0 + j5_offset} 0 0"
        />
-    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
     <parent
       link="${name}_arm_wrist_yaw" />
     <child
@@ -186,16 +170,11 @@
   </joint>
   
   <link name="${name}_arm_wrist_roll">
-    <!--
-    <xacro:inertial_sphere_with_pose_macro mass="0.27" diameter="0.03">
-      <origin xyz="0.0 0.0 -0.03" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    
-    <xacro:inertial_cuboid__with_pose_macro mass="0.27" x_length="0.06" y_length="0.06" z_length="0.1">
-      <origin xyz="0.0 0.0 -0.07" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
-    
+    	<inertial>
+                <origin xyz="0.75e-03 0 -72.98e-03" rpy="0 0 0"/>
+                <mass value="0.441"/>
+                <inertia ixx="475419.459e-09" ixy="${reflect * 0.001e-09}" ixz="16500.682e-09" iyy="553568.777e-09" iyz="${reflect * 0.001e-09}" izz="213537.589e-09" />
+        </inertial>
     
     <xacro:arm_wrist_roll_visual_geom_macro reflect="${reflect}"/>
     <xacro:arm_wrist_roll_collision_geom_macro reflect="${reflect}"/>
@@ -207,7 +186,6 @@
       xyz="0 0 0"
       rpy="0 0 ${0 + j6_offset}"
        />
-    <!--rpy="0.000329950722368627 -3.91151844547536E-19 1.16573417585641E-15"-->
     <parent
       link="${name}_arm_wrist_roll" />
     <child
@@ -218,25 +196,13 @@
   </joint>
   
   <link name="${name}_hand">
-    <!--
-    <xacro:inertial_sphere_with_pose_macro mass="0.81" diameter="0.05">
-      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="0.13" x_length="0.035" y_length="0.035" z_length="0.01">
-      <origin xyz="0.0 0.0 -0.135" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
-    <visual>
-      <origin
-        xyz="0 0 -0.135"
-        rpy=" 0 0 0" />
-      <geometry>
-	<box size="0.035 .035 .01"/>
-        <!--<mesh
-          filename="package://thor_mang_description/meshes/visual/wrist_yaw_left.stl" scale="0.001 0.001 0.001"/>-->
-      </geometry>
-      <xacro:black/>
-    </visual>
+    <inertial>
+                <origin xyz="0 0 -149.34e-03" rpy="0 0 0"/>
+                <mass value="0.171"/>
+                <inertia ixx="46209.326e-09" ixy="${reflect * -6.454e-09}" ixz="-5.221e-09" iyy="38759.568e-09" iyz="${reflect * 4.139e-09}" izz="55609.8e-09" />
+    </inertial>
+
+    <xacro:arm_wrist_yaw2_visual_geom_macro reflect="${reflect}"/>
     <xacro:arm_wrist_yaw2_collision_geom_macro />
     
   </link>

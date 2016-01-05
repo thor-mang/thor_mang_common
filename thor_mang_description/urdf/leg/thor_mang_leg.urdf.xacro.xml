@@ -27,9 +27,12 @@
   </joint>  
     
   <link name="${name}_leg_hip_yaw">
-    <xacro:inertial_cuboid__with_pose_macro mass="0.15" x_length="0.16" y_length="0.08" z_length="0.08">
-      <origin xyz="-0.02 0.0 0.0" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
+    <inertial>
+                <origin xyz="-18.48e-03 0 47.46e-03" rpy="0 0 0"/>
+                <mass value="153e-03"/>
+                <inertia ixx="111864.016e-09" ixy="${reflect * 0.013e-09}" ixz="-14115.503e-09" iyy="503585.775e-09" iyz="-0.007e-09" izz="491253.663e-09" />
+    </inertial>
+
     <xacro:leg_hip_yaw_visual_geom_macro /> 
     <xacro:leg_hip_yaw_collision_geom_macro />    
   </link>
@@ -49,14 +52,12 @@
   </joint>
   
   <link name="${name}_leg_hip_roll">
-    <!--    
-    <xacro:inertial_sphere_with_pose_macro mass="1.02" diameter="0.05">
-      <origin xyz="-0.0216 0.0 0.0" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="1.02" x_length="0.12" y_length="0.08" z_length="0.08">
-      <origin xyz="-0.02 0.0 0.0" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
+    <inertial>
+                <origin xyz="-20.63e-03 ${reflect * -0.02e-03} 0" rpy="0 0 0"/>
+                <mass value="1037e-03"/>
+                <inertia ixx="591029.606e-09" ixy="${reflect * -15007.975e-09}" ixz="13.666e-09" iyy="1621687.148e-09" iyz="21.805e-09" izz="1708592.082e-09" />
+    </inertial>
+
     <xacro:leg_hip_roll_visual_geom_macro /> 
     <xacro:leg_hip_roll_collision_geom_macro />    
   </link>
@@ -77,14 +78,12 @@
   </joint>
   
   <link name="${name}_leg_thigh">
-    <!--    
-    <xacro:inertial_sphere_with_pose_macro mass="3.12" diameter="0.15">
-      <origin xyz="-0.0033 ${0.0294 * reflect} -0.172" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="3.12" x_length="0.09" y_length="0.13" z_length="0.3">
-      <origin xyz="-0.0033 ${0.0294 * reflect} -0.172" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
+    <inertial>
+                <origin xyz="-6.5e-03 ${reflect * 28.17e-03} -178.97e-03" rpy="0 0 0"/>
+                <mass value="2918e-03"/>
+                <inertia ixx="37149307.501e-09" ixy="${reflect * 59956.774e-09}" ixz="3352154.176e-09" iyy="34664744.627e-09" iyz="1518022.692e-09" izz="6100392.478e-09" />
+    </inertial>
+
     <xacro:leg_thigh_visual_geom_macro reflect="${reflect}"/>
     <xacro:leg_thigh_collision_geom_macro reflect="${reflect}"/>
   </link>
@@ -107,14 +106,11 @@
   </joint>
   
   <link name="${name}_leg_shank">
-    <!--    
-    <xacro:inertial_sphere_with_pose_macro mass="2.24" diameter="0.15">
-      <origin xyz="0.03 ${0.0313 * reflect} -0.17" rpy="0 0 0"/>
-    </xacro:inertial_sphere_with_pose_macro>
-    -->
-    <xacro:inertial_cuboid__with_pose_macro mass="2.24" x_length="0.09" y_length="0.13" z_length="0.3">
-      <origin xyz="0.03 ${0.0313 * reflect} -0.17" rpy="0 0 0"/>
-    </xacro:inertial_cuboid__with_pose_macro>
+    <inertial>
+                <origin xyz="33.99e-03 ${reflect * 28.54e-03} -177.81e-03" rpy="0 0 0"/>
+                <mass value="2072e-03"/>
+                <inertia ixx="16754078.009e-09" ixy="${reflect * -38832.262e-09}" ixz="414222.386e-09" iyy="14181161.872e-09" iyz="-724398.641e-09" izz="4369298.512e-09" />
+    </inertial>
 
     <xacro:leg_shank_visual_geom_macro reflect="${reflect}"/>
     <xacro:leg_shank_collision_geom_macro reflect="${reflect}"/>    
@@ -136,9 +132,12 @@
   </joint>
   
   <link name="${name}_leg_ankle_roll">
-    <xacro:inertial_cuboid__with_pose_macro mass="0.86" x_length="0.12" y_length="0.08" z_length="0.08">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:inertial_cuboid__with_pose_macro>
+    <inertial>
+                <origin xyz="-10.94e-03 ${reflect * 0.9e-03} 0" rpy="0 0 0"/>
+                <mass value="855e-03"/>
+                <inertia ixx="465881.005e-09" ixy="${reflect * 19810.364e-09}" ixz="-34.464e-09" iyy="974809.494e-09" iyz="-109.153e-09" izz="1027967.217e-09" />
+    </inertial>
+
     <xacro:leg_ankle_roll_visual_geom_macro reflect="${reflect}"/>
     <xacro:leg_ankle_roll_collision_geom_macro reflect="${reflect}"/>
   </link>
@@ -159,9 +158,12 @@
   </joint>
   
   <link name="${name}_foot">
-    <xacro:inertial_cuboid__with_pose_macro mass="1.03" x_length="0.24" y_length="0.144" z_length="0.04">
-      <origin xyz="0.009 0 -0.098" rpy="0 0 0" />
-    </xacro:inertial_cuboid__with_pose_macro>
+    <inertial>
+                <origin xyz="4.48e-03 0 -95.24e-03" rpy="0 0 0"/>
+                <mass value="1405e-03"/>
+                <inertia ixx="2223476.5e-09" ixy="${reflect * -17.177e-09}" ixz="-132158.63e-09" iyy="4839843.308e-09" iyz="72.209e-09" izz="5819988.159e-09" />
+    </inertial>
+
     <xacro:leg_foot_visual_geom_macro />
     <xacro:leg_foot_collision_geom_macro />
 
