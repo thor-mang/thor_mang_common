@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-  
-  <include file="$(find thor_mang_description)/launch/xacrodisplay_common.launch">
-    <arg name="robot_description" value="$(find xacro)/xacro.py $(find thor_mang_description)/robots/thor_mang_left_arm_standalone.urdf.xacro"/>  
-  </include>  
-  
-</launch>
