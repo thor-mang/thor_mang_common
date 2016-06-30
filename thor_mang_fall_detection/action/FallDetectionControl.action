@@ -1,6 +1,0 @@
-# Define the goal
-bool run  # Specify if fall detection should start running or pause
----
-# Define the result
----
-# Define a feedback message
