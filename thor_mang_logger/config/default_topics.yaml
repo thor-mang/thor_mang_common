@@ -3,4 +3,4 @@ topics_to_record:
 - /tf
 - /joint_states
 - /johnny5/sensor/imu/raw
-- /johnny5/sensor/head_lidar/scan
+- /johnny5/sensor/lidar/scan
