@@ -1,5 +1,5 @@
 # thor_mang_common
-Provides thor_mang related files required for both simulation and real robot use (analogous to pr2_common)
+Provides thor_mang related files required for both simulation and real robot use (analogous to pr2_common). The URDF model is for the THOR MANG v1 variant used by Team Hector at the DRC. For the updated THOR MANG v3 model used by the team, see [our fork of ROBOTIS-THORMANG-Common](https://github.com/thor-mang/ROBOTIS-THORMANG-Common).
 
 
 ## Standalone installation
